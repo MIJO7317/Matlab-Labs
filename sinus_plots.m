@@ -2,7 +2,7 @@
 x1 = linspace(4*pi, 12*pi, 1000);
 
 %Определение вектора x2, который используется в третьем и четвертом графике.
-x2 = linspace(0, pi, 1000);
+x2 = linspace(0, 4*pi, 4000);
 
 %Определение вектора y_bad, являющегося первым значением функции bad_sinus для первого графика.
 y_bad = bad_sinus(x1);
@@ -122,17 +122,17 @@ ylabel(subplot3, 'Number of iterations', 'Interpreter', 'latex');
 legend(subplot3, 'bad\_iterations', 'Interpreter', 'latex');
 
 %Задание отметок на оси x третьего графика.
-xticks(subplot3, [0, pi/6, pi/3, pi/2, 2*pi/3, 5*pi/6, pi]);
+xticks(subplot3, [0, pi/2, pi, 3*pi/2, 2*pi, 5*pi/2, 3*pi, 7*pi/2, 4*pi]);
 
 %Задание отметок на оси y третьего графика.
-yticks(subplot3, [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
+yticks(subplot3, [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]); 
 
 %Задание меток на оси x и y третьего графика, используя LaTeX.
-set(subplot3, 'XTickLabel', {'$0$', '$\frac{\pi}{6}$', '$\frac{\pi}{3}$', '$\frac{\pi}{2}$', '$\frac{2\pi}{3}$', '$\frac{5\pi}{6}$', '$\pi$'}, 'TickLabelInterpreter', 'latex');
-set(subplot3, 'YTickLabel', {'$0$', '$10$', '$20$', '$30$', '$40$', '$50$', '$60$', '$70$', '$80$', '$90$', '$100$'}, 'TickLabelInterpreter', 'latex');
+set(subplot3, 'XTickLabel', {'$0$', '$\frac{\pi}{2}$', '$\pi$', '$\frac{3\pi}{2}$', '$2\pi$', '$\frac{5\pi}{2}$', '$3\pi$', '$\frac{7\pi}{2}$', '$4\pi$'}, 'TickLabelInterpreter', 'latex');
+set(subplot3, 'YTickLabel', {'$0$', '$5$', '$10$', '$15$', '$20$', '$25$', '$30$', '$35$', '$40$', '$45$', '$50$'}, 'TickLabelInterpreter', 'latex');
 
 %Задание масштаба осей третьего графика.
-axis(subplot3, [0, pi, 0, 100]);
+axis(subplot3, [0, 4*pi, 0, 50]);
 
 %Создание четвертого графика.
 subplot4 = subplot(2, 2, 4);
@@ -157,14 +157,14 @@ ylabel(subplot4, 'Number of iterations', 'Interpreter', 'latex');
 legend(subplot4, 'good\_iterations', 'Interpreter', 'latex');
 
 %Задание отметок на оси x четвертого графика.
-xticks(subplot4, [0, pi/6, pi/3, pi/2, 2*pi/3, 5*pi/6, pi]);
+xticks(subplot4, [0, pi/2, pi, 3*pi/2, 2*pi, 5*pi/2, 3*pi, 7*pi/2, 4*pi]);
 
 %Задание отметок на оси y четвертого графика.
-yticks(subplot4, [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
+yticks(subplot4, [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]);
 
 %Задание меток на оси x и y четвертого графика, используя LaTeX.
-set(subplot4, 'XTickLabel', {'$0$', '$\frac{\pi}{6}$', '$\frac{\pi}{3}$', '$\frac{\pi}{2}$', '$\frac{2\pi}{3}$', '$\frac{5\pi}{6}$', '$\pi$'}, 'TickLabelInterpreter', 'latex');
-set(subplot4, 'YTickLabel', {'$0$', '$10$', '$20$', '$30$', '$40$', '$50$', '$60$', '$70$', '$80$', '$90$', '$100$'}, 'TickLabelInterpreter', 'latex');
+set(subplot4, 'XTickLabel', {'$0$', '$\frac{\pi}{2}$', '$\pi$', '$\frac{3\pi}{2}$', '$2\pi$', '$\frac{5\pi}{2}$', '$\frac{3\pi}{2}$', '$\frac{7\pi}{2}$', '$4\pi$'}, 'TickLabelInterpreter', 'latex');
+set(subplot4, 'YTickLabel', {'$0$', '$2$', '$4$', '$6$', '$8$', '$10$', '$12$', '$14$', '$16$', '$18$', '$20$'}, 'TickLabelInterpreter', 'latex');
 
 %Задание масштаба осей четвертого графика.
-axis(subplot4, [0, pi, 0, 100]);
+axis(subplot4, [0, 4*pi, 0, 20]);
