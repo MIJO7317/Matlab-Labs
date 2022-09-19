@@ -54,11 +54,11 @@ ylabel('t');
 zlabel('u(x,t)');
 title('Analytical solution');
 
-%Вывод самой большой ошибки
-disp('Max error:');
+%Вывод ошибки
+disp('Error:');
 disp(max(max(abs(u_an-u))));
 
-% %Построение анимации и сохранение в виде GIF-файла
+% %Построение анимации и сохранение в виде GIF-файла 60 fps
 % figure;
 % for n = 1:M
 %     plot(x,u(:,n));
@@ -71,12 +71,8 @@ disp(max(max(abs(u_an-u))));
 %     im = frame2im(frame);
 %     [imind,cm] = rgb2ind(im,256);
 %     if n == 1
-%         imwrite(imind,cm,'animation.gif','gif','Loopcount',inf);
+%         imwrite(imind,cm,'animation.gif','gif','Loopcount',inf, 'DelayTime',1/60);
 %     else
-%         imwrite(imind,cm,'animation.gif','gif','WriteMode','append');
+%         imwrite(imind,cm,'animation.gif','gif','WriteMode','append', 'DelayTime',1/60);
 %     end
 % end
-
-%Что изменилось в сравнении с предыдущей версией?
-%1. Использованы матричные операции для ускорения расчетов.
-%2. Добавлено построение анимации и сохранение в виде GIF-файла.
