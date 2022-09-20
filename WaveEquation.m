@@ -40,13 +40,13 @@ end
 u_an = sin(2*pi*x)'*cos(2*pi*t);
 
 %Построение графиков
-figure(1)
+figure;
 mesh(x,t,u')
 title('Numerical solution')
 xlabel('x')
 ylabel('t')
 zlabel('u(x,t)')
-figure(2)
+figure;
 mesh(x,t,u_an')
 title('Analytical solution')
 xlabel('x')

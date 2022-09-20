@@ -37,6 +37,7 @@ for n = 1:M-1
 end
 
 %График решения
+figure;
 mesh(x,t,u');
 xlabel('x');
 ylabel('t');
@@ -53,7 +54,6 @@ xlabel('x');
 ylabel('t');
 zlabel('u(x,t)');
 title('Analytical solution');
-
 %Вывод ошибки
 disp('Error:');
 disp(max(max(abs(u_an-u))));
