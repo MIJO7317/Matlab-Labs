@@ -5,40 +5,30 @@
 g=9.81; %ускорение свободного падения
 v0=10; %начальная скорость
 start_point=[0,0]; %начальная точка
-k=linspace(0, 10, 100); %коэффициент сопротивления
+k=linspace(0, 10, 50); %коэффициент сопротивления
 m=1; %масса ракеты
-alpha=linspace(0, pi/2, 100); %угол запуска
-T = max(2*v0*sin(alpha)/g); %время моделирования
+alpha=linspace(0, pi/2, 20); %угол запуска
 L = zeros(length(alpha)); %Определение вектора расстояний
 
 for n = 1:length(k)
-    %Нахождение расстояния полёта
     for i=1:length(alpha)
-        %Решение дифференциального уравнения методом Рунге-Кутты 4-го порядка
-        [t,rv] = ode45(@(t,rv)[rv(3); rv(4); -k(n)/m*rv(3); -k(n)/m*rv(4)-g],[0 T],[start_point(1) start_point(2) v0*cos(alpha(i)) v0*sin(alpha(i))]);
-        %Определение траектории полёта
-        r = rv(:,1:2);
-        %Определение пересечения траектории с осью OX
-        for j=1:length(r)-1
-            x = r(j,1);
-            y = r(j,2);
-            x_next = r(j+1,1);
-            y_next = r(j+1,2);
-            if y_next < 0
-                %Определение пересечения прямой, построенной по точкам (x_next,y_next) и (x,y) с осью OX
-                L(i) = x_next - (x_next-x)*(y_next)/(y_next-y);
-                break
-            end
-        end
+        %Получение траектории полёта
+        r = GetTrajectory(start_point, v0, alpha(i), g, k(n), m);
+        %Получение расстояния полёта
+        L(i) = r(end, 1);
     end
 
+    %Интерполяция кубическим сплайном L(alpha)
+    alpha_int = linspace(0, pi/2, 1000);
+    L_spline = interp1(alpha, L, alpha_int, 'spline');
+
     %Построение графика и точки максимального расстояния на нём
-    plot(alpha, L);
+    plot(alpha_int, L_spline);
     hold on;
-    [maxL, maxL_index] = max(L);
-    plot(alpha(maxL_index), maxL, 'r*');
-    xlabel('Angle, rad');
-    ylabel('Distance, m');
+    [maxL, maxL_index] = max(L_spline);
+    plot(alpha_int(maxL_index), maxL, 'r.', 'MarkerSize', 20);
+    xlabel('Angle, rad', 'Interpreter', 'latex', 'FontSize', 14);
+    ylabel('Distance, m', 'Interpreter', 'latex', 'FontSize', 14);
     hold on;
 end
 

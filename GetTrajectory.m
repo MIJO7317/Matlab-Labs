@@ -1,5 +1,11 @@
 %Функция, возвращающая траекторию ракеты
 function r = GetTrajectory(start_point, v0, angle, g, k, m)
+    %Если угол равен 0, то траектория будет точкой
+    if angle == 0
+        r = start_point;
+        return;
+    end
+    
     T = 2*v0/g; %время полета ракеты
     
     %Решаем систему уравнений
