@@ -17,7 +17,7 @@ function alpha = Alpha(L)
     %Инициализация кривой
     curve = [];
     %Стреляем N раз и интерполируем кривую зависимости угла от расстояния
-    N = 4;
+    N = 100;
     angle = linspace(alpha_min, alpha_max, N);
     for i=1:N
         r = GetTrajectory(start_point, v0, angle(i), g, k, m);
