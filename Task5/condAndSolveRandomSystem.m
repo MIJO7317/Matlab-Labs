@@ -4,6 +4,8 @@
 function [cond_number, x] = condAndSolveRandomSystem(n)
     % Создание случайной матрицы nxn
     A = rand(n);
+    % % Хорошо обусловленнная матрица
+    % A = A + 1000*eye(n);
     % Создание случайного вектора b nx1
     b = rand(n, 1);
     % Вычисление числа обусловленности матрицы A
@@ -22,4 +24,9 @@ function [cond_number, x] = condAndSolveRandomSystem(n)
     disp(x);
     disp('Matlab solution:');
     disp(x_matlab);
+    % Вывести невязку решений
+    disp('My residual:');
+    disp(A*x - b);
+    disp('Matlab residual:');
+    disp(A*x_matlab - b);
 end
